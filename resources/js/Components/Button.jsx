@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons-react";
 import React from "react";
 import Swal from "sweetalert2";
-export default function Button({ type, url, className, children, ...props }) {
+export default function Button({ type, processing, url, className, children, ...props }) {
     const { delete: destroy } = useForm();
 
     const handleDeleteData = async (url) => {
@@ -60,6 +60,7 @@ export default function Button({ type, url, className, children, ...props }) {
                 <button
                     type="submit"
                     className="px-4 py-2 text-sm rounded-lg border border-teal-100 bg-teal-50 text-teal-500 flex items-center gap-2 hover:bg-teal-100"
+                    disabled={processing}
                 >
                     <IconCheck size={16} strokeWidth={1.5} /> Save Data
                 </button>
