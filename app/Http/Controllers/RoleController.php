@@ -40,8 +40,17 @@ class RoleController extends Controller implements HasMiddleware
     public function create()
     {
         // get permissions
-        $permissions = Permission::all();
+        // $permissions = Permission::all();
+        $data = Permission::orderBy('name')->pluck('name', 'id');
+        $collection = collect($data);
+        $permissions = $collection->groupBy(function ($item, $key) {
+            // Memecah string menjadi array kata-kata
+            $words = explode(' ', $item);
 
+            // Mengambil kata pertama
+            return $words[0];
+        });
+        // return $permissions;
         // render view
         return inertia('Roles/Create', ['permissions' => $permissions]);
     }
@@ -81,7 +90,15 @@ class RoleController extends Controller implements HasMiddleware
     public function edit(Role $role)
     {
         // get permissions
-        $permissions = Permission::all();
+        $data = Permission::orderBy('name')->pluck('name', 'id');
+        $collection = collect($data);
+        $permissions = $collection->groupBy(function ($item, $key) {
+            // Memecah string menjadi array kata-kata
+            $words = explode(' ', $item);
+
+            // Mengambil kata pertama
+            return $words[0];
+        });
 
         // load permissions
         $role->load('permissions');
