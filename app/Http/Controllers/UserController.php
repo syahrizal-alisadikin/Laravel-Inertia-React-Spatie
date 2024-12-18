@@ -9,6 +9,11 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 class UserController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware for the resource controller.
+     *
+     * @return array
+     */
     public static function middleware()
     {
         return [

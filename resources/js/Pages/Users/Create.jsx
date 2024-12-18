@@ -5,7 +5,6 @@ import { Head, useForm, usePage } from '@inertiajs/react';
 import Input from '@/Components/Input';
 import Button from '@/Components/Button';
 import Card from '@/Components/Card';
-import Checkbox from '@/Components/Checkbox';
 import Select2 from '@/Components/Select2';
 import Swal from 'sweetalert2';
 export default function Create({auth}) {
