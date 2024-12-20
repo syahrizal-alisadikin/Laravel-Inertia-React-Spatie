@@ -30,7 +30,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
-
+                                {hasAnyPermission(["absensi index"]) && (
+                                    <NavLink
+                                        href={route("absensi.index")}
+                                        active={route().current("absensi*")}
+                                    >
+                                        Absensi
+                                    </NavLink>
+                                )}
                                 {hasAnyPermission(["permissions index"]) && (
                                     <NavLink
                                         href={route("permissions.index")}
@@ -47,12 +54,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                         Roles
                                     </NavLink>
                                 )}
-                                {hasAnyPermission(['users index']) &&
-                                    <NavLink href={route('users.index')} active={route().current('users*')}>
+                                {hasAnyPermission(["users index"]) && (
+                                    <NavLink
+                                        href={route("users.index")}
+                                        active={route().current("users*")}
+                                    >
                                         Users
                                     </NavLink>
-                                }
-
+                                )}
                             </div>
                         </div>
 
@@ -175,12 +184,14 @@ export default function AuthenticatedLayout({ header, children }) {
                             </ResponsiveNavLink>
                         )}
 
-                        {hasAnyPermission(['users index']) &&
-                            <ResponsiveNavLink href={route('users.index')} active={route().current('users*')}>
+                        {hasAnyPermission(["users index"]) && (
+                            <ResponsiveNavLink
+                                href={route("users.index")}
+                                active={route().current("users*")}
+                            >
                                 Users
                             </ResponsiveNavLink>
-                        }
-
+                        )}
                     </div>
 
                     <div className="border-t border-gray-200 pb-1 pt-4">

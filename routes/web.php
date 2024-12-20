@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/users', UserController::class);
 
     // Attendance
+    Route::get('absensi', [AttendanceController::class, 'index'])->name('absensi.index');
     Route::post('attendance', [AttendanceController::class, 'submit'])->name('attendance.submit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
