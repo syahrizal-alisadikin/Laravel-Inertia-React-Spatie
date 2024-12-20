@@ -34,7 +34,7 @@ export default function Index({ auth }) {
                         />
                     </div>
                 </div>
-                <Table.Card title={"users"}>
+                <Table.Card title={"Absensi"}>
                     <Table>
                         <Table.Thead>
                             <tr>
