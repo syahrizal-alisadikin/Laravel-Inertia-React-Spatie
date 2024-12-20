@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
 {
+    static function isTodaySubmitted(): bool
+    {
+        return Attendances::where('user_id', auth()->user()->id)
+            ->whereDate('created_at', now()->toDateString())
+            ->exists();
+    }
     public function submit(Request $request)
     {
         $request->validate([

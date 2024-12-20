@@ -2,7 +2,8 @@ import SubmitAttendance from "@/Attendance/Submit";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
-export default function Dashboard() {
+export default function Dashboard({ submitted }) {
+    console.log(submitted);
     return (
         <AuthenticatedLayout
             header={
@@ -21,7 +22,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <SubmitAttendance />
+                <SubmitAttendance masuk={submitted}/>
             </div>
         </AuthenticatedLayout>
     );

@@ -7,7 +7,7 @@ import Card from "@/Components/Card";
 import Swal from "sweetalert2";
 import Select2 from "@/Components/Select2";
 
-export default function SubmitAttendance() {
+export default function SubmitAttendance({ masuk }) {
     // destruct roles and user from usepage props
     // destruct roles from usepage props
 
@@ -92,7 +92,7 @@ export default function SubmitAttendance() {
                         </div>
                         <Select2
                             onChange={handleSelectedRoles}
-                            defaultOptions={data.filterRole}
+                            defaultOptions={!masuk ? data.filterRole : null}
                             options={formattedRoles}
                             single={true}
                             placeholder="Pilih Role..."
@@ -108,7 +108,7 @@ export default function SubmitAttendance() {
                             <Input
                                 label={"Description"}
                                 type={"text"}
-                                value={data.description}
+                                value={!masuk ? data.description : ""}
                                 onChange={(e) =>
                                     setData("description", e.target.value)
                                 }
@@ -118,11 +118,17 @@ export default function SubmitAttendance() {
                         </div>
                     )}
                     <div className="flex items-center gap-2">
-                        <Button
-                            type={"submit"}
-                            processing={processing}
-                            title={"Kirim Absen"}
-                        />
+                        {!masuk ? (
+                            <Button
+                                type={"submit"}
+                                processing={processing}
+                                title={"Kirim Absen"}
+                            />
+                        ) : (
+                            <div className="text-green-500 text-sm mt-2">
+                                Terima kasih sudah absen
+                            </div>
+                        )}
                     </div>
                 </form>
             </Card>
