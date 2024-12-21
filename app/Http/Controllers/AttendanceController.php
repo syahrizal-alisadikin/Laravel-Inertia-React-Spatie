@@ -24,7 +24,7 @@ class AttendanceController extends Controller implements HasMiddleware
 
     static function isTodaySubmitted(): bool
     {
-        return Attendances::where('user_id', auth()->user()->id)
+        return Attendances::where('user_id', auth()->user()?->id)
             ->whereDate('created_at', now()->toDateString())
             ->exists();
     }

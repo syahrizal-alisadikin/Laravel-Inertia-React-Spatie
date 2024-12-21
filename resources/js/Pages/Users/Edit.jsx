@@ -16,6 +16,7 @@ export default function Edit({ auth }) {
     const { data, setData, post, errors, processing } = useForm({
         name: user.name,
         email: user.email,
+        uid: user.uid,
         selectedRoles: user.roles.map((role) => role.name),
         filterRole: user.roles.map((role) => ({
             value: role.name,
@@ -66,6 +67,18 @@ export default function Edit({ auth }) {
                 <Card title={"Edit user"}>
                     <form onSubmit={handleUpdateData}>
                         <div className="mb-4">
+                            <div className="mb-4">
+                                <Input
+                                    label={"Uid"}
+                                    type={"text"}
+                                    value={data.uid}
+                                    onChange={(e) =>
+                                        setData("uid", e.target.value)
+                                    }
+                                    errors={errors.uid}
+                                    placeholder="Input Uid User.."
+                                />
+                            </div>
                             <Input
                                 label={"Name"}
                                 type={"text"}

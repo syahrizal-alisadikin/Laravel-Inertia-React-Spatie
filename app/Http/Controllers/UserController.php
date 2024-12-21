@@ -57,6 +57,7 @@ class UserController extends Controller implements HasMiddleware
          // validate request
          $request->validate([
             'name' => 'required|min:3|max:255',
+            'uid' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:4',
             'selectedRoles' => 'required|array|min:1',
@@ -65,6 +66,7 @@ class UserController extends Controller implements HasMiddleware
         // create user
         $user = User::create([
             'name' => $request->name,
+            'uid' => $request->uid,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
@@ -107,6 +109,7 @@ class UserController extends Controller implements HasMiddleware
         // validate request
         $request->validate([
             'name' => 'required|min:3|max:255',
+            'uid' => 'required|min:3|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'selectedRoles' => 'required|array|min:1',
         ]);
@@ -114,6 +117,7 @@ class UserController extends Controller implements HasMiddleware
         // update user data
         $user->update([
             'name' => $request->name,
+            'uid' => $request->uid,
             'email' => $request->email,
         ]);
 
