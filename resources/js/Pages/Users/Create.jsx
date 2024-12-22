@@ -48,7 +48,12 @@ export default function Create({ auth }) {
             },
         });
     };
+    console.log("running");
 
+    window.Echo.channel("read-rfid-channel").listen("ReadRfidEvent", (e) => {
+        console.log(e);
+        console.log("runn");
+    });
     return (
         <AuthenticatedLayout
             user={auth.user}
